@@ -1,0 +1,20 @@
+{
+  "name": "dispatch",
+  "version": "1.0.0",
+  "description": "DISPATCH — File Export Automation Planner by CurioLabs",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "vite": "^7.3.1"
+  }
+}

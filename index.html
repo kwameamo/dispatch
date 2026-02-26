@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0D0D0D" />
+    <meta name="description" content="DISPATCH — File Export Automation Planner by CurioLabs" />
+
+    <!-- AuxMono font -->
+    <style>
+      @font-face {
+        font-family: 'AuxMono';
+        src: url('/fonts/AuxMono-Regular.woff2') format('woff2');
+        font-weight: 400;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'AuxMono';
+        src: url('/fonts/AuxMono-Bold.woff2') format('woff2');
+        font-weight: 700;
+        font-display: swap;
+      }
+    </style>
+
+    <title>DISPATCH by CurioLabs</title>
+
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      html, body, #root {
+        height: 100%;
+        background: #0D0D0D;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      ::-webkit-scrollbar { width: 4px; height: 4px; }
+      ::-webkit-scrollbar-track { background: transparent; }
+      ::-webkit-scrollbar-thumb { background: #2A2A2A; border-radius: 2px; }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
