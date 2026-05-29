@@ -1,0 +1,19 @@
+{
+  "name": "Dispatch — Export Planner",
+  "short_name": "Dispatch",
+  "description": "Generate the exact export checklist for any design project. Brand, app icons, social packs, packaging, and more.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0D0D0D",
+  "theme_color": "#0D0D0D",
+  "categories": ["utilities", "productivity"],
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

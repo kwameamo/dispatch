@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0D0D0D"/>
+
+  <!-- Subtle grid -->
+  <g stroke="#131313" stroke-width="1">
+    <line x1="0"    y1="80"  x2="1200" y2="80"/>
+    <line x1="0"    y1="160" x2="1200" y2="160"/>
+    <line x1="0"    y1="240" x2="1200" y2="240"/>
+    <line x1="0"    y1="320" x2="1200" y2="320"/>
+    <line x1="0"    y1="400" x2="1200" y2="400"/>
+    <line x1="0"    y1="480" x2="1200" y2="480"/>
+    <line x1="0"    y1="560" x2="1200" y2="560"/>
+    <line x1="80"   y1="0"   x2="80"   y2="630"/>
+    <line x1="160"  y1="0"   x2="160"  y2="630"/>
+    <line x1="240"  y1="0"   x2="240"  y2="630"/>
+    <line x1="320"  y1="0"   x2="320"  y2="630"/>
+    <line x1="400"  y1="0"   x2="400"  y2="630"/>
+    <line x1="480"  y1="0"   x2="480"  y2="630"/>
+    <line x1="560"  y1="0"   x2="560"  y2="630"/>
+    <line x1="640"  y1="0"   x2="640"  y2="630"/>
+    <line x1="720"  y1="0"   x2="720"  y2="630"/>
+    <line x1="800"  y1="0"   x2="800"  y2="630"/>
+    <line x1="880"  y1="0"   x2="880"  y2="630"/>
+    <line x1="960"  y1="0"   x2="960"  y2="630"/>
+    <line x1="1040" y1="0"   x2="1040" y2="630"/>
+    <line x1="1120" y1="0"   x2="1120" y2="630"/>
+  </g>
+
+  <!-- Corner marks -->
+  <g stroke="#FF6B35" stroke-width="2" fill="none" opacity="0.35">
+    <path d="M 44,88 L 44,44 L 88,44"/>
+    <path d="M 1112,44 L 1156,44 L 1156,88"/>
+    <path d="M 44,542 L 44,586 L 88,586"/>
+    <path d="M 1112,586 L 1156,586 L 1156,542"/>
+  </g>
+
+  <!-- Large D mark on the right -->
+  <path fill="#FF6B35" fill-rule="evenodd" opacity="0.07" d="
+    M 760,80 L 760,550 L 940,550
+    C 1100,550 1160,460 1160,315
+    C 1160,170 1100,80 940,80 Z
+    M 830,148 L 930,148
+    C 1060,148 1090,220 1090,315
+    C 1090,410 1060,482 930,482
+    L 830,482 Z
+  "/>
+
+  <!-- Accent bar -->
+  <rect x="72" y="340" width="100" height="3" fill="#FF6B35" opacity="0.9"/>
+
+  <!-- Eyebrow -->
+  <text x="72" y="186"
+    font-family="'Courier New', Courier, monospace"
+    font-size="13"
+    fill="#FF6B35"
+    letter-spacing="4"
+    font-weight="normal"
+    opacity="0.9">EXPORT PLANNER FOR DESIGNERS</text>
+
+  <!-- DISPATCH wordmark -->
+  <text x="72" y="306"
+    font-family="'Courier New', Courier, monospace"
+    font-size="104"
+    font-weight="bold"
+    fill="#E8E4DC"
+    letter-spacing="6">DISPATCH</text>
+
+  <!-- Tagline -->
+  <text x="72" y="370"
+    font-family="'Courier New', Courier, monospace"
+    font-size="17"
+    fill="#444444"
+    letter-spacing="2">Know exactly what to hand off, before you hand off.</text>
+
+  <!-- Project type chips -->
+  <g font-family="'Courier New', Courier, monospace" font-size="11" fill="#333333" letter-spacing="1">
+    <rect x="72"  y="415" width="112" height="22" rx="2" fill="#161616"/>
+    <text x="82"  y="431">Brand Identity</text>
+
+    <rect x="194" y="415" width="110" height="22" rx="2" fill="#161616"/>
+    <text x="204" y="431">App Icon Set</text>
+
+    <rect x="314" y="415" width="128" height="22" rx="2" fill="#161616"/>
+    <text x="324" y="431">Social Media Pack</text>
+
+    <rect x="452" y="415" width="130" height="22" rx="2" fill="#161616"/>
+    <text x="462" y="431">Video Content Pack</text>
+
+    <rect x="72"  y="447" width="118" height="22" rx="2" fill="#161616"/>
+    <text x="82"  y="463">Print Campaign</text>
+
+    <rect x="200" y="447" width="118" height="22" rx="2" fill="#161616"/>
+    <text x="210" y="463">Email Campaign</text>
+
+    <rect x="328" y="447" width="126" height="22" rx="2" fill="#161616"/>
+    <text x="338" y="463">Packaging &amp; Label</text>
+
+    <rect x="464" y="447" width="108" height="22" rx="2" fill="#161616"/>
+    <text x="474" y="463">Design System</text>
+
+    <text x="72" y="502" font-size="10" fill="#222222" letter-spacing="1">+ Web / UI Design · Presentation · Motion / Animation</text>
+  </g>
+
+  <!-- By CurioLabs -->
+  <text x="72" y="590"
+    font-family="'Courier New', Courier, monospace"
+    font-size="11"
+    fill="#222222"
+    letter-spacing="3">BY CURIOLABS</text>
+</svg>

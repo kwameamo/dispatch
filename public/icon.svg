@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <rect width="512" height="512" rx="88" fill="#0D0D0D"/>
+  <!-- Bold D letterform with evenodd cutout -->
+  <path fill="#FF6B35" fill-rule="evenodd" d="
+    M 108,96
+    L 108,416
+    L 236,416
+    C 366,416 408,346 408,256
+    C 408,166 366,96 236,96
+    Z
+    M 162,156
+    L 228,156
+    C 318,156 350,200 350,256
+    C 350,312 318,356 228,356
+    L 162,356
+    Z
+  "/>
+</svg>
