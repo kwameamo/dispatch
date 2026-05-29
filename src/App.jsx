@@ -690,18 +690,23 @@ function Tooltip({ tip, accentColor, isMobile }) {
         onMouseEnter={!isMobile ? show : undefined}
         onMouseLeave={!isMobile ? hide : undefined}
         style={{
+          minWidth: 44, minHeight: 44,
+          background: "transparent", border: "none",
+          display: "flex", alignItems: "center", justifyContent: "center",
+          cursor: "pointer", flexShrink: 0, fontFamily: "inherit",
+          WebkitTapHighlightColor: "transparent", padding: 0,
+        }}
+        aria-label="More info"
+      >
+        <div style={{
           width: 16, height: 16, borderRadius: "50%",
           border: `1px solid ${open ? accentColor : "#2A2A2A"}`,
           background: open ? `${accentColor}18` : "transparent",
           color: open ? accentColor : "#3A3A3A",
           fontSize: 9, fontWeight: "bold",
           display: "flex", alignItems: "center", justifyContent: "center",
-          cursor: "pointer", flexShrink: 0, fontFamily: "inherit",
-          transition: "all 0.15s", WebkitTapHighlightColor: "transparent", lineHeight: 1,
-        }}
-        aria-label="More info"
-      >
-        ?
+          lineHeight: 1, transition: "all 0.15s", pointerEvents: "none",
+        }}>?</div>
       </button>
 
       {open && (
@@ -721,7 +726,7 @@ function Tooltip({ tip, accentColor, isMobile }) {
             boxShadow: `0 8px 32px #00000088, 0 0 0 1px ${accentColor}11`,
           }}
         >
-          <div style={{ fontSize: 11, color: "#999", lineHeight: 1.7, fontFamily: FONT }}>{tip}</div>
+          <div style={{ fontSize: 11, color: "#C0BCBA", lineHeight: 1.7, fontFamily: FONT }}>{tip}</div>
           <div style={{
             position: "absolute", top: -5,
             left: pos.align === "center" ? "50%" : pos.align === "right" ? "auto" : 16,
@@ -768,7 +773,10 @@ function LandingPage({ onStart }) {
 
       {/* Nav */}
       <nav style={{
-        padding: isMobile ? "14px 24px" : "18px 48px",
+        paddingTop: isMobile ? "calc(env(safe-area-inset-top, 0px) + 14px)" : "18px",
+        paddingBottom: isMobile ? "14px" : "18px",
+        paddingLeft: isMobile ? "calc(env(safe-area-inset-left, 0px) + 28px)" : "48px",
+        paddingRight: isMobile ? "calc(env(safe-area-inset-right, 0px) + 28px)" : "48px",
         display: "flex", justifyContent: "space-between", alignItems: "center",
         borderBottom: "1px solid #161616",
         position: "sticky", top: 0, background: "#0D0D0Dcc",
@@ -780,16 +788,16 @@ function LandingPage({ onStart }) {
         </div>
         <button
           onClick={() => onStart()}
-          style={{ background: "none", border: "1px solid #252525", color: "#555", fontFamily: FONT, fontSize: 10, letterSpacing: "0.14em", textTransform: "uppercase", padding: "8px 16px", cursor: "pointer", transition: "all 0.15s" }}
+          style={{ background: "none", border: "1px solid #2E2E2E", color: "#777", fontFamily: FONT, fontSize: 10, letterSpacing: "0.14em", textTransform: "uppercase", padding: "0 18px", minHeight: 44, cursor: "pointer", transition: "all 0.15s", display: "flex", alignItems: "center" }}
           onMouseEnter={e => { e.currentTarget.style.borderColor = "#FF6B35"; e.currentTarget.style.color = "#FF6B35"; }}
-          onMouseLeave={e => { e.currentTarget.style.borderColor = "#252525"; e.currentTarget.style.color = "#555"; }}
+          onMouseLeave={e => { e.currentTarget.style.borderColor = "#2E2E2E"; e.currentTarget.style.color = "#777"; }}
         >
           Open Tool →
         </button>
       </nav>
 
       {/* Hero */}
-      <section style={{ padding: isMobile ? "56px 24px 44px" : "88px 48px 64px", maxWidth: 1100, margin: "0 auto", width: "100%", boxSizing: "border-box" }}>
+      <section style={{ padding: isMobile ? "64px 28px 52px" : "96px 48px 72px", maxWidth: 1100, margin: "0 auto", width: "100%", boxSizing: "border-box" }}>
         <div className="land-fadein" style={{ fontSize: 10, letterSpacing: "0.22em", color: "#FF6B35", textTransform: "uppercase", marginBottom: 20 }}>
           Export Planner for Designers
         </div>
@@ -798,7 +806,7 @@ function LandingPage({ onStart }) {
           Plan your<br />deliverables.
         </h1>
 
-        <p className="land-fadein-3" style={{ margin: "0 0 36px", fontSize: isMobile ? 13 : 15, color: "#555", lineHeight: 1.8, maxWidth: 500, letterSpacing: "0.02em" }}>
+        <p className="land-fadein-3" style={{ margin: "0 0 36px", fontSize: isMobile ? 13 : 15, color: "#B0ACA6", lineHeight: 1.8, maxWidth: 500, letterSpacing: "0.02em" }}>
           Generate the exact export checklist for any design project.
           Brand identities, app icons, social packs, packaging, and more —
           know what to hand off before you hand off.
@@ -807,13 +815,13 @@ function LandingPage({ onStart }) {
         <div style={{ display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap", marginBottom: isMobile ? 44 : 56 }}>
           <button
             onClick={() => onStart()}
-            style={{ background: "#FF6B35", border: "none", color: "#0D0D0D", fontFamily: FONT, fontSize: 12, fontWeight: "bold", letterSpacing: "0.14em", textTransform: "uppercase", padding: isMobile ? "13px 22px" : "15px 30px", cursor: "pointer", transition: "opacity 0.15s" }}
+            style={{ background: "#FF6B35", border: "none", color: "#0D0D0D", fontFamily: FONT, fontSize: 12, fontWeight: "bold", letterSpacing: "0.14em", textTransform: "uppercase", padding: isMobile ? "15px 24px" : "15px 30px", cursor: "pointer", transition: "opacity 0.15s", minHeight: 44, display: "flex", alignItems: "center" }}
             onMouseEnter={e => e.currentTarget.style.opacity = "0.82"}
             onMouseLeave={e => e.currentTarget.style.opacity = "1"}
           >
             Start Planning →
           </button>
-          <span style={{ fontSize: 11, color: "#2A2A2A", letterSpacing: "0.08em" }}>No signup. Always free.</span>
+          <span style={{ fontSize: 11, color: "#999", letterSpacing: "0.08em" }}>No signup. Always free.</span>
         </div>
 
         {/* Stats */}
@@ -821,25 +829,24 @@ function LandingPage({ onStart }) {
           {stats.map(({ num, label }, i) => (
             <div key={label} style={{ paddingRight: isMobile ? 20 : 32, paddingLeft: i > 0 ? (isMobile ? 20 : 32) : 0, paddingBottom: 8, borderRight: i < stats.length - 1 ? "1px solid #1E1E1E" : "none" }}>
               <div style={{ fontSize: isMobile ? 20 : 26, color: "#E8E4DC", fontWeight: "bold", lineHeight: 1 }}>{num}</div>
-              <div style={{ fontSize: 9, color: "#3E3E3E", letterSpacing: "0.14em", textTransform: "uppercase", marginTop: 5 }}>{label}</div>
+              <div style={{ fontSize: 9, color: "#999", letterSpacing: "0.14em", textTransform: "uppercase", marginTop: 5 }}>{label}</div>
             </div>
           ))}
         </div>
       </section>
 
       {/* Project types grid */}
-      <section style={{ padding: isMobile ? "0 0 56px" : "0 0 72px", maxWidth: 1100, margin: "0 auto", width: "100%", boxSizing: "border-box" }}>
-        <div style={{ padding: isMobile ? "0 24px 16px" : "0 48px 20px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <div style={{ fontSize: 9, letterSpacing: "0.2em", color: "#2E2E2E", textTransform: "uppercase" }}>Project Types</div>
-          <div style={{ fontSize: 9, color: "#2A2A2A", letterSpacing: "0.06em" }}>Click any to begin</div>
+      <section style={{ padding: isMobile ? "0 0 64px" : "0 0 80px", maxWidth: 1100, margin: "0 auto", width: "100%", boxSizing: "border-box" }}>
+        <div style={{ padding: isMobile ? "0 28px 20px" : "0 48px 24px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <div style={{ fontSize: 9, letterSpacing: "0.2em", color: "#999", textTransform: "uppercase" }}>Project Types</div>
+          <div style={{ fontSize: 9, color: "#999", letterSpacing: "0.06em" }}>Tap any to begin</div>
         </div>
 
         <div style={{
           display: "grid",
           gridTemplateColumns: isSmall ? "repeat(2, 1fr)" : isMobile ? "repeat(2, 1fr)" : w < 900 ? "repeat(3, 1fr)" : "repeat(4, 1fr)",
-          gap: 1, background: "#1A1A1A",
-          margin: isMobile ? "0 24px" : "0 48px",
-          border: "1px solid #1A1A1A",
+          gap: isMobile ? 10 : 14,
+          padding: isMobile ? "0 28px" : "0 48px",
         }}>
           {Object.entries(PROJECT_TYPES).map(([name, data]) => (
             <button
@@ -848,21 +855,22 @@ function LandingPage({ onStart }) {
               onMouseEnter={() => setHoveredType(name)}
               onMouseLeave={() => setHoveredType(null)}
               style={{
-                background: hoveredType === name ? "#111" : "#0D0D0D",
-                border: "none",
-                padding: isMobile ? "18px 14px" : "22px 18px",
+                background: hoveredType === name ? `${data.color}0C` : "#0F0F0F",
+                border: `1px solid ${hoveredType === name ? data.color + "50" : "#202020"}`,
+                borderRadius: 8,
+                padding: isMobile ? "20px 16px" : "28px 20px",
                 textAlign: "left", cursor: "pointer",
-                transition: "background 0.12s",
-                fontFamily: FONT, display: "flex", flexDirection: "column", gap: 8,
+                transition: "all 0.15s",
+                fontFamily: FONT, display: "flex", flexDirection: "column", gap: 12,
                 WebkitTapHighlightColor: "transparent",
               }}
             >
-              <span style={{ fontSize: isMobile ? 17 : 19, color: data.color, lineHeight: 1, transition: "transform 0.15s", transform: hoveredType === name ? "scale(1.1)" : "scale(1)", display: "inline-block" }}>
+              <span style={{ fontSize: isMobile ? 20 : 22, color: data.color, lineHeight: 1, transition: "transform 0.15s", transform: hoveredType === name ? "scale(1.1)" : "scale(1)", display: "inline-block" }}>
                 {data.icon}
               </span>
               <div>
-                <div style={{ fontSize: isMobile ? 10 : 11, color: hoveredType === name ? "#D8D4CC" : "#888", letterSpacing: "0.06em", lineHeight: 1.4, transition: "color 0.12s" }}>{name}</div>
-                <div style={{ fontSize: 9, color: "#2E2E2E", marginTop: 3, letterSpacing: "0.06em" }}>{data.exports.length} exports</div>
+                <div style={{ fontSize: isMobile ? 11 : 12, color: hoveredType === name ? "#E4E0D8" : "#C0BCB4", letterSpacing: "0.04em", lineHeight: 1.4, transition: "color 0.12s" }}>{name}</div>
+                <div style={{ fontSize: 9, color: "#888", marginTop: 5, letterSpacing: "0.06em" }}>{data.exports.length} exports</div>
               </div>
             </button>
           ))}
@@ -870,28 +878,28 @@ function LandingPage({ onStart }) {
       </section>
 
       {/* How it works */}
-      <section style={{ padding: isMobile ? "44px 24px 56px" : "64px 48px 72px", borderTop: "1px solid #161616", maxWidth: 1100, margin: "0 auto", width: "100%", boxSizing: "border-box" }}>
-        <div style={{ fontSize: 9, letterSpacing: "0.2em", color: "#2E2E2E", textTransform: "uppercase", marginBottom: 36 }}>How it works</div>
+      <section style={{ padding: isMobile ? "52px 28px 64px" : "72px 48px 80px", borderTop: "1px solid #161616", maxWidth: 1100, margin: "0 auto", width: "100%", boxSizing: "border-box" }}>
+        <div style={{ fontSize: 9, letterSpacing: "0.2em", color: "#999", textTransform: "uppercase", marginBottom: 36 }}>How it works</div>
         <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)", gap: isMobile ? 32 : 48 }}>
           {steps.map(s => (
             <div key={s.n}>
               <div style={{ fontSize: 10, color: "#FF6B35", letterSpacing: "0.2em", marginBottom: 14 }}>{s.n}</div>
               <div style={{ fontSize: 12, color: "#C4C0B8", letterSpacing: "0.04em", marginBottom: 10, lineHeight: 1.4 }}>{s.title}</div>
-              <div style={{ fontSize: 11, color: "#404040", lineHeight: 1.8, letterSpacing: "0.02em" }}>{s.desc}</div>
+              <div style={{ fontSize: 11, color: "#999", lineHeight: 1.8, letterSpacing: "0.02em" }}>{s.desc}</div>
             </div>
           ))}
         </div>
       </section>
 
       {/* CTA band */}
-      <div style={{ borderTop: "1px solid #161616", padding: isMobile ? "32px 24px" : "44px 48px", maxWidth: 1100, margin: "0 auto", width: "100%", boxSizing: "border-box", display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: isMobile ? "flex-start" : "center", justifyContent: "space-between", gap: 20 }}>
+      <div style={{ borderTop: "1px solid #161616", padding: isMobile ? "40px 28px" : "52px 48px", maxWidth: 1100, margin: "0 auto", width: "100%", boxSizing: "border-box", display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: isMobile ? "flex-start" : "center", justifyContent: "space-between", gap: 24 }}>
         <div>
           <div style={{ fontSize: isMobile ? 17 : 22, color: "#E8E4DC", lineHeight: 1.25, marginBottom: 6 }}>Ready to plan your exports?</div>
-          <div style={{ fontSize: 11, color: "#3A3A3A", letterSpacing: "0.04em" }}>No account needed — start in seconds.</div>
+          <div style={{ fontSize: 11, color: "#AAA", letterSpacing: "0.04em" }}>No account needed — start in seconds.</div>
         </div>
         <button
           onClick={() => onStart()}
-          style={{ background: "none", border: "1px solid #FF6B35", color: "#FF6B35", fontFamily: FONT, fontSize: 10, fontWeight: "bold", letterSpacing: "0.16em", textTransform: "uppercase", padding: "13px 26px", cursor: "pointer", transition: "all 0.15s", whiteSpace: "nowrap", flexShrink: 0 }}
+          style={{ background: "none", border: "1px solid #FF6B35", color: "#FF6B35", fontFamily: FONT, fontSize: 10, fontWeight: "bold", letterSpacing: "0.16em", textTransform: "uppercase", padding: "0 26px", minHeight: 44, cursor: "pointer", transition: "all 0.15s", whiteSpace: "nowrap", flexShrink: 0, display: "flex", alignItems: "center" }}
           onMouseEnter={e => { e.currentTarget.style.background = "#FF6B35"; e.currentTarget.style.color = "#0D0D0D"; }}
           onMouseLeave={e => { e.currentTarget.style.background = "none"; e.currentTarget.style.color = "#FF6B35"; }}
         >
@@ -900,9 +908,20 @@ function LandingPage({ onStart }) {
       </div>
 
       {/* Footer */}
-      <footer style={{ borderTop: "1px solid #141414", padding: isMobile ? "14px 24px" : "14px 48px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8 }}>
-        <span style={{ fontSize: 9, color: "#252525", letterSpacing: "0.16em", textTransform: "uppercase" }}>Dispatch — by CurioLabs</span>
-        <span style={{ fontSize: 9, color: "#1E1E1E", letterSpacing: "0.08em" }}>No signup · No ads · No tracking</span>
+      <footer style={{
+        background: "#FF6B35",
+        paddingTop: "24px",
+        paddingBottom: "calc(env(safe-area-inset-bottom, 0px) + 24px)",
+        paddingLeft: isMobile ? "calc(env(safe-area-inset-left, 0px) + 28px)" : "48px",
+        paddingRight: isMobile ? "calc(env(safe-area-inset-right, 0px) + 28px)" : "48px",
+        display: "flex", justifyContent: "space-between", alignItems: "center",
+        flexWrap: "wrap", gap: 12,
+      }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+          <span style={{ fontSize: 11, color: "#0D0D0D", letterSpacing: "0.18em", textTransform: "uppercase", fontWeight: "bold", fontFamily: FONT }}>Dispatch</span>
+          <span style={{ fontSize: 9, color: "#0D0D0D", letterSpacing: "0.1em", opacity: 0.6, fontFamily: FONT }}>by CurioLabs</span>
+        </div>
+        <span style={{ fontSize: 9, color: "#0D0D0D", letterSpacing: "0.1em", opacity: 0.65, fontFamily: FONT }}>No signup · No ads · No tracking</span>
       </footer>
     </div>
   );
@@ -913,50 +932,86 @@ function ProjectPicker({ onSelect, onBack, isMobile }) {
   const [hovered, setHovered] = useState(null);
 
   return (
-    <div style={{ padding: isMobile ? "20px 16px 32px" : "36px 40px 40px" }}>
-      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: isMobile ? 20 : 28 }}>
-        <button onClick={onBack} style={{ background: "none", border: "none", color: "#3A3A3A", cursor: "pointer", fontFamily: FONT, fontSize: 10, letterSpacing: "0.15em", textTransform: "uppercase", padding: "4px 0", flexShrink: 0, WebkitTapHighlightColor: "transparent" }}>
+    <div style={{ padding: isMobile ? "24px 0 40px" : "40px 48px 48px" }}>
+      {/* Header */}
+      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: isMobile ? 8 : 32, padding: isMobile ? "0 20px" : 0 }}>
+        <button onClick={onBack} style={{ background: "none", border: "none", color: "#555", cursor: "pointer", fontFamily: FONT, fontSize: 13, minWidth: 44, minHeight: 44, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, WebkitTapHighlightColor: "transparent", padding: "0 8px" }}>
           ←
         </button>
         <div>
-          <div style={{ fontSize: isMobile ? 16 : 19, color: "#E8E4DC" }}>What are you exporting?</div>
-          <div style={{ fontSize: 10, color: "#3A3A3A", letterSpacing: "0.1em", textTransform: "uppercase", marginTop: 4 }}>Select a project type</div>
+          <div style={{ fontSize: isMobile ? 17 : 20, color: "#E8E4DC" }}>What are you exporting?</div>
+          <div style={{ fontSize: 10, color: "#888", letterSpacing: "0.1em", textTransform: "uppercase", marginTop: 4 }}>Select a project type</div>
         </div>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : "repeat(3, 1fr)", gap: isMobile ? 8 : 10 }}>
-        {Object.entries(PROJECT_TYPES).map(([name, data]) => (
-          <button
-            key={name}
-            onClick={() => onSelect(name)}
-            onMouseEnter={() => setHovered(name)}
-            onMouseLeave={() => setHovered(null)}
-            style={{
-              background: hovered === name ? `${data.color}0C` : "#0F0F0F",
-              border: `1px solid ${hovered === name ? data.color + "55" : "#1E1E1E"}`,
-              borderRadius: 6,
-              padding: isMobile ? "14px 12px" : "18px 16px",
-              cursor: "pointer", textAlign: "left",
-              transition: "all 0.15s ease",
-              display: "flex", flexDirection: "column", gap: 9,
-              minHeight: isMobile ? 88 : 96,
-              WebkitTapHighlightColor: "transparent",
-              position: "relative", overflow: "hidden",
-            }}
-          >
-            {/* Accent left stripe on hover */}
-            <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 2, background: data.color, opacity: hovered === name ? 1 : 0, transition: "opacity 0.15s", borderRadius: "6px 0 0 6px" }} />
-            <span style={{ fontSize: isMobile ? 18 : 20, color: data.color, lineHeight: 1 }}>{data.icon}</span>
-            <div>
-              <div style={{ fontSize: isMobile ? 11 : 12, color: "#D4D0C8", lineHeight: 1.35, letterSpacing: "0.04em" }}>{name}</div>
-              <div style={{ fontSize: 10, color: "#3A3A3A", marginTop: 3, letterSpacing: "0.04em" }}>{data.description}</div>
-            </div>
-            <div style={{ fontSize: 9, color: hovered === name ? data.color + "88" : "#282828", letterSpacing: "0.06em", marginTop: -2 }}>
-              {data.exports.length} exports
-            </div>
-          </button>
-        ))}
-      </div>
+      {isMobile ? (
+        /* ── Mobile: full-width list ── */
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          {Object.entries(PROJECT_TYPES).map(([name, data], idx, arr) => (
+            <button
+              key={name}
+              onClick={() => onSelect(name)}
+              onMouseEnter={() => setHovered(name)}
+              onMouseLeave={() => setHovered(null)}
+              style={{
+                background: hovered === name ? "#111" : "transparent",
+                border: "none",
+                borderBottom: idx < arr.length - 1 ? "1px solid #1C1C1C" : "none",
+                padding: "16px 20px",
+                cursor: "pointer", textAlign: "left",
+                transition: "background 0.12s",
+                fontFamily: FONT, display: "flex", alignItems: "center", gap: 16,
+                WebkitTapHighlightColor: "transparent",
+              }}
+            >
+              <span style={{ fontSize: 22, color: data.color, lineHeight: 1, flexShrink: 0, width: 28, textAlign: "center" }}>{data.icon}</span>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ fontSize: 14, color: "#D8D4CC", letterSpacing: "0.02em", lineHeight: 1.3 }}>{name}</div>
+                <div style={{ fontSize: 11, color: "#888", marginTop: 3, letterSpacing: "0.02em" }}>{data.description}</div>
+              </div>
+              <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", flexShrink: 0, gap: 1 }}>
+                <span style={{ fontSize: 11, color: data.color, fontWeight: "bold" }}>{data.exports.length}</span>
+                <span style={{ fontSize: 9, color: "#555", letterSpacing: "0.06em" }}>exports</span>
+              </div>
+              <span style={{ color: "#333", fontSize: 16, flexShrink: 0, marginLeft: 4 }}>›</span>
+            </button>
+          ))}
+        </div>
+      ) : (
+        /* ── Desktop: card grid ── */
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14 }}>
+          {Object.entries(PROJECT_TYPES).map(([name, data]) => (
+            <button
+              key={name}
+              onClick={() => onSelect(name)}
+              onMouseEnter={() => setHovered(name)}
+              onMouseLeave={() => setHovered(null)}
+              style={{
+                background: hovered === name ? `${data.color}0C` : "#0F0F0F",
+                border: `1px solid ${hovered === name ? data.color + "55" : "#1E1E1E"}`,
+                borderRadius: 8,
+                padding: "24px 20px",
+                cursor: "pointer", textAlign: "left",
+                transition: "all 0.15s ease",
+                display: "flex", flexDirection: "column", gap: 12,
+                minHeight: 116,
+                WebkitTapHighlightColor: "transparent",
+                position: "relative", overflow: "hidden",
+              }}
+            >
+              <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 2, background: data.color, opacity: hovered === name ? 1 : 0, transition: "opacity 0.15s", borderRadius: "8px 0 0 8px" }} />
+              <span style={{ fontSize: 22, color: data.color, lineHeight: 1 }}>{data.icon}</span>
+              <div>
+                <div style={{ fontSize: 12, color: "#D4D0C8", lineHeight: 1.35, letterSpacing: "0.03em" }}>{name}</div>
+                <div style={{ fontSize: 10, color: "#888", marginTop: 4, letterSpacing: "0.03em" }}>{data.description}</div>
+              </div>
+              <div style={{ fontSize: 9, color: hovered === name ? data.color : "#888", letterSpacing: "0.06em" }}>
+                {data.exports.length} exports
+              </div>
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
@@ -968,20 +1023,20 @@ function NameStep({ selected, projectName, setProjectName, onContinue, onBack, i
   useEffect(() => { const t = setTimeout(() => inputRef.current?.focus(), 150); return () => clearTimeout(t); }, []);
 
   return (
-    <div style={{ padding: isMobile ? "24px 16px" : "56px 40px", display: "flex", flexDirection: "column", gap: 24, maxWidth: 480 }}>
-      <button onClick={onBack} style={{ background: "none", border: "none", color: "#444", cursor: "pointer", fontFamily: FONT, fontSize: 10, letterSpacing: "0.15em", textTransform: "uppercase", padding: 0, display: "flex", alignItems: "center", gap: 6, width: "fit-content" }}>
+    <div style={{ padding: isMobile ? "32px 24px" : "64px 48px", display: "flex", flexDirection: "column", gap: 28, maxWidth: 520 }}>
+      <button onClick={onBack} style={{ background: "none", border: "none", color: "#666", cursor: "pointer", fontFamily: FONT, fontSize: 10, letterSpacing: "0.15em", textTransform: "uppercase", padding: "0 4px", minHeight: 44, display: "flex", alignItems: "center", gap: 6, width: "fit-content", WebkitTapHighlightColor: "transparent" }}>
         ← Back
       </button>
 
       <div style={{ display: "inline-flex", alignItems: "center", gap: 10, background: `${data.color}10`, border: `1px solid ${data.color}28`, borderRadius: 6, padding: "10px 14px", width: "fit-content" }}>
         <span style={{ color: data.color, fontSize: 16 }}>{data.icon}</span>
         <span style={{ color: data.color, fontSize: 12, fontWeight: "bold", letterSpacing: "0.04em" }}>{selected}</span>
-        <span style={{ fontSize: 9, color: `${data.color}66`, marginLeft: 2, letterSpacing: "0.06em" }}>{data.exports.length} exports</span>
+        <span style={{ fontSize: 9, color: `${data.color}AA`, marginLeft: 2, letterSpacing: "0.06em" }}>{data.exports.length} exports</span>
       </div>
 
       <div>
         <div style={{ fontSize: isMobile ? 18 : 22, color: "#E8E4DC", marginBottom: 6 }}>Name your project</div>
-        <div style={{ fontSize: 10, color: "#444", letterSpacing: "0.1em", lineHeight: 1.6 }}>Used to auto-generate filenames — you can skip this</div>
+        <div style={{ fontSize: 10, color: "#888", letterSpacing: "0.1em", lineHeight: 1.6 }}>Used to auto-generate filenames — you can skip this</div>
       </div>
 
       <input
@@ -990,7 +1045,7 @@ function NameStep({ selected, projectName, setProjectName, onContinue, onBack, i
         onChange={e => setProjectName(e.target.value)}
         onKeyDown={e => e.key === "Enter" && onContinue()}
         placeholder="e.g. acme-rebrand"
-        style={{ background: "#0F0F0F", border: "1px solid #252525", borderRadius: 6, padding: "14px 16px", color: "#E8E4DC", fontFamily: FONT, fontSize: 15, width: "100%", boxSizing: "border-box", outline: "none", transition: "border-color 0.15s", WebkitAppearance: "none" }}
+        style={{ background: "#0F0F0F", border: "1px solid #252525", borderRadius: 6, padding: "14px 16px", color: "#E8E4DC", fontFamily: FONT, fontSize: 16, width: "100%", boxSizing: "border-box", outline: "none", transition: "border-color 0.15s", WebkitAppearance: "none" }}
         onFocus={e => e.target.style.borderColor = data.color}
         onBlur={e => e.target.style.borderColor = "#252525"}
       />
@@ -1013,17 +1068,17 @@ function ZipModal({ progress, accentColor }) {
   return (
     <div style={{ position: "fixed", inset: 0, background: "#000000BB", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 999, backdropFilter: "blur(6px)" }}>
       <div style={{ background: "#111", border: `1px solid ${accentColor}30`, borderRadius: 10, padding: "28px 32px", width: "min(320px, 90vw)", textAlign: "center" }}>
-        <div style={{ fontSize: 10, letterSpacing: "0.2em", textTransform: "uppercase", color: "#444", marginBottom: 20 }}>Building Dispatch</div>
+        <div style={{ fontSize: 10, letterSpacing: "0.2em", textTransform: "uppercase", color: "#888", marginBottom: 20 }}>Building Dispatch</div>
         <style>{`@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`}</style>
         <div style={{ fontSize: 28, color: accentColor, marginBottom: 20, animation: "spin 1.2s linear infinite", display: "inline-block" }}>◈</div>
         <div style={{ height: 3, background: "#1A1A1A", borderRadius: 2, marginBottom: 10, overflow: "hidden" }}>
           <div style={{ width: `${pct}%`, height: "100%", background: accentColor, borderRadius: 2, transition: "width 0.3s ease" }} />
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 12 }}>
-          <span style={{ fontSize: 10, color: "#383838" }}>{progress.current} of {progress.total} files</span>
+          <span style={{ fontSize: 10, color: "#777" }}>{progress.current} of {progress.total} files</span>
           <span style={{ fontSize: 10, color: accentColor, fontWeight: "bold" }}>{pct}%</span>
         </div>
-        <div style={{ fontSize: 10, color: "#383838", fontFamily: "monospace", height: 14, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+        <div style={{ fontSize: 10, color: "#777", fontFamily: "monospace", height: 14, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
           {progress.label || "…"}
         </div>
       </div>
@@ -1033,15 +1088,19 @@ function ZipModal({ progress, accentColor }) {
 
 // ── Step 3: Checklist ─────────────────────────────────────────────────────────
 function Checklist({ selected, projectName, onBack, isMobile }) {
-  const [checked, setChecked] = useState({});
+  const data = PROJECT_TYPES[selected];
+  const exports = data.exports;
+  const accentColor = data.color;
+
+  const [checked, setChecked] = useState(() => {
+    const init = {};
+    exports.forEach((exp, i) => { if (exp.required) init[i] = true; });
+    return init;
+  });
   const [showNames, setShowNames] = useState(false);
   const [filterCat, setFilterCat] = useState("All");
   const [zipState, setZipState] = useState("idle");
   const [zipProgress, setZipProgress] = useState({ current: 0, total: 0, label: "" });
-
-  const data = PROJECT_TYPES[selected];
-  const exports = data.exports;
-  const accentColor = data.color;
   const categories = ["All", ...new Set(exports.map(e => e.category))];
   const filtered = exports.filter(e => filterCat === "All" || e.category === filterCat);
   const required = exports.filter(e => e.required).length;
@@ -1080,26 +1139,26 @@ function Checklist({ selected, projectName, onBack, isMobile }) {
       {zipState === "generating" && <ZipModal progress={zipProgress} accentColor={accentColor} />}
 
       {/* Header */}
-      <div style={{ padding: isMobile ? "10px 14px 0" : "16px 40px 0", background: "#0F0F0F", borderBottom: "1px solid #1A1A1A", flexShrink: 0 }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
-          <button onClick={onBack} style={{ background: "none", border: "none", color: "#444", cursor: "pointer", fontFamily: FONT, fontSize: 10, letterSpacing: "0.15em", textTransform: "uppercase", padding: "4px 0", flexShrink: 0, WebkitTapHighlightColor: "transparent" }}>
+      <div style={{ padding: isMobile ? "12px 16px 0" : "20px 48px 0", background: "#0F0F0F", borderBottom: "1px solid #1A1A1A", flexShrink: 0 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
+          <button onClick={onBack} style={{ background: "none", border: "none", color: "#666", cursor: "pointer", fontFamily: FONT, fontSize: 13, minWidth: 44, minHeight: 44, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, WebkitTapHighlightColor: "transparent", padding: "0 8px" }}>
             ←
           </button>
           <div style={{ flex: 1, minWidth: 0, display: "flex", alignItems: "center", gap: 7 }}>
             <span style={{ color: accentColor, flexShrink: 0, fontSize: 14 }}>{data.icon}</span>
             <span style={{ fontSize: 12, color: "#D4D0C8", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{selected}</span>
-            {projectName && <span style={{ fontSize: 10, color: "#333", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", flexShrink: 1 }}>· {projectName}</span>}
+            {projectName && <span style={{ fontSize: 10, color: "#555", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", flexShrink: 1 }}>· {projectName}</span>}
           </div>
-          <button onClick={markAll} style={{ background: "transparent", border: `1px solid ${accentColor}44`, color: accentColor, padding: "4px 9px", cursor: "pointer", fontFamily: FONT, fontSize: 9, letterSpacing: "0.1em", textTransform: "uppercase", borderRadius: 3, flexShrink: 0, WebkitTapHighlightColor: "transparent" }}>All</button>
-          <button onClick={clearAll} style={{ background: "transparent", border: "1px solid #222", color: "#444", padding: "4px 9px", cursor: "pointer", fontFamily: FONT, fontSize: 9, letterSpacing: "0.1em", textTransform: "uppercase", borderRadius: 3, flexShrink: 0, WebkitTapHighlightColor: "transparent" }}>Clear</button>
+          <button onClick={markAll} style={{ background: "transparent", border: `1px solid ${accentColor}44`, color: accentColor, padding: "0 14px", minHeight: 44, cursor: "pointer", fontFamily: FONT, fontSize: 9, letterSpacing: "0.1em", textTransform: "uppercase", borderRadius: 3, flexShrink: 0, WebkitTapHighlightColor: "transparent", display: "flex", alignItems: "center" }}>All</button>
+          <button onClick={clearAll} style={{ background: "transparent", border: "1px solid #222", color: "#666", padding: "0 14px", minHeight: 44, cursor: "pointer", fontFamily: FONT, fontSize: 9, letterSpacing: "0.1em", textTransform: "uppercase", borderRadius: 3, flexShrink: 0, WebkitTapHighlightColor: "transparent", display: "flex", alignItems: "center" }}>Clear</button>
         </div>
 
         {/* Progress */}
-        <div style={{ marginBottom: 12 }}>
+        <div style={{ marginBottom: 14 }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 5 }}>
             <div style={{ display: "flex", gap: 12 }}>
-              <span style={{ fontSize: 10, color: "#383838" }}><span style={{ color: accentColor }}>{required}</span> required</span>
-              <span style={{ fontSize: 10, color: "#2E2E2E" }}>{total - required} optional</span>
+              <span style={{ fontSize: 10, color: "#999" }}><span style={{ color: accentColor }}>{required}</span> required</span>
+              <span style={{ fontSize: 10, color: "#888" }}>{total - required} optional</span>
             </div>
             <span style={{ fontSize: 11, color: allDone ? "#34D399" : accentColor, fontWeight: "bold" }}>{done}/{total}{allDone ? " ✓" : ""}</span>
           </div>
@@ -1109,28 +1168,33 @@ function Checklist({ selected, projectName, onBack, isMobile }) {
         </div>
 
         {/* Filters */}
-        <div style={{ display: "flex", gap: 6, alignItems: "center", paddingBottom: 12 }}>
+        <div style={{ display: "flex", gap: 6, alignItems: "center", paddingBottom: 14 }}>
           <div style={{ display: "flex", gap: 4, flex: 1, overflowX: "auto", scrollbarWidth: "none", msOverflowStyle: "none" }}>
             {categories.map(cat => (
               <button key={cat} onClick={() => setFilterCat(cat)} style={{
                 background: filterCat === cat ? accentColor : "transparent",
-                border: `1px solid ${filterCat === cat ? accentColor : "#202020"}`,
-                color: filterCat === cat ? "#000" : "#555",
-                padding: "3px 10px", cursor: "pointer", fontFamily: FONT,
+                border: `1px solid ${filterCat === cat ? accentColor : "#2E2E2E"}`,
+                color: filterCat === cat ? "#000" : "#777",
+                padding: isMobile ? "0 14px" : "0 10px",
+                minHeight: isMobile ? 40 : 28,
+                cursor: "pointer", fontFamily: FONT,
                 fontSize: 9, letterSpacing: "0.1em", textTransform: "uppercase",
                 borderRadius: 20, fontWeight: filterCat === cat ? "bold" : "normal",
                 whiteSpace: "nowrap", flexShrink: 0, transition: "all 0.12s",
-                WebkitTapHighlightColor: "transparent",
+                WebkitTapHighlightColor: "transparent", display: "flex", alignItems: "center",
               }}>{cat}</button>
             ))}
           </div>
           <button onClick={() => setShowNames(n => !n)} style={{
             background: showNames ? `${accentColor}15` : "transparent",
-            border: `1px solid ${showNames ? accentColor : "#202020"}`,
-            color: showNames ? accentColor : "#444",
-            padding: "3px 10px", cursor: "pointer", fontFamily: FONT, fontSize: 9,
+            border: `1px solid ${showNames ? accentColor : "#2E2E2E"}`,
+            color: showNames ? accentColor : "#777",
+            padding: isMobile ? "0 14px" : "0 10px",
+            minHeight: isMobile ? 40 : 28,
+            cursor: "pointer", fontFamily: FONT, fontSize: 9,
             letterSpacing: "0.1em", textTransform: "uppercase", borderRadius: 3,
             flexShrink: 0, WebkitTapHighlightColor: "transparent", whiteSpace: "nowrap",
+            display: "flex", alignItems: "center",
           }}>
             {showNames ? "Names ×" : "Names"}
           </button>
@@ -1138,8 +1202,8 @@ function Checklist({ selected, projectName, onBack, isMobile }) {
       </div>
 
       {/* List */}
-      <div style={{ flex: 1, overflowY: "auto", padding: isMobile ? "8px 14px" : "14px 40px" }}>
-        <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
+      <div style={{ flex: 1, overflowY: "auto", padding: isMobile ? "12px 16px" : "16px 48px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
           {filtered.map(exp => {
             const gi = exports.indexOf(exp);
             const isDone = checked[gi];
@@ -1150,7 +1214,7 @@ function Checklist({ selected, projectName, onBack, isMobile }) {
                 style={{
                   background: isDone ? "#0B1A0E" : "#0C0C0C",
                   border: `1px solid ${isDone ? "#1B3620" : "#161616"}`,
-                  borderRadius: 6, padding: isMobile ? "11px 12px" : "12px 16px",
+                  borderRadius: 8, padding: isMobile ? "14px 14px" : "14px 18px",
                   cursor: "pointer", transition: "all 0.12s",
                   display: "flex", gap: 11, alignItems: "flex-start",
                   opacity: isDone ? 0.55 : 1, userSelect: "none",
@@ -1174,11 +1238,11 @@ function Checklist({ selected, projectName, onBack, isMobile }) {
                     )}
                   </div>
                   <div style={{ display: "flex", gap: 10 }}>
-                    <span style={{ fontSize: 9, color: "#353535" }}>{exp.category}</span>
-                    <span style={{ fontSize: 9, color: "#2E2E2E", fontFamily: "monospace" }}>{exp.dimensions}</span>
+                    <span style={{ fontSize: 9, color: "#888" }}>{exp.category}</span>
+                    <span style={{ fontSize: 9, color: "#888", fontFamily: "monospace" }}>{exp.dimensions}</span>
                   </div>
                   {showNames && (
-                    <div style={{ marginTop: 7, fontSize: 9, color: "#3A3A3A", fontFamily: "monospace", background: "#090909", padding: "4px 8px", borderRadius: 3, border: "1px solid #141414", wordBreak: "break-all", lineHeight: 1.7 }}>
+                    <div style={{ marginTop: 7, fontSize: 9, color: "#888", fontFamily: "monospace", background: "#090909", padding: "4px 8px", borderRadius: 3, border: "1px solid #1E1E1E", wordBreak: "break-all", lineHeight: 1.7 }}>
                       {generateFilename(projectName, exp.format, exp.category, exp.dimensions)}
                     </div>
                   )}
@@ -1189,13 +1253,13 @@ function Checklist({ selected, projectName, onBack, isMobile }) {
         </div>
 
         {/* Footer controls */}
-        <div style={{ marginTop: 14, display: "flex", gap: 8, alignItems: "stretch", flexWrap: "wrap" }}>
+        <div style={{ marginTop: 20, display: "flex", gap: 8, alignItems: "stretch", flexWrap: "wrap" }}>
           <div style={{ display: "flex", gap: 12, alignItems: "center", flex: 1 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
               <span style={{ width: 4, height: 4, borderRadius: "50%", background: accentColor, display: "inline-block", opacity: 0.7 }} />
-              <span style={{ fontSize: 9, color: "#383838", textTransform: "uppercase", letterSpacing: "0.12em" }}>Required</span>
+              <span style={{ fontSize: 9, color: "#999", textTransform: "uppercase", letterSpacing: "0.12em" }}>Required</span>
             </div>
-            <span style={{ fontSize: 9, color: "#282828", textTransform: "uppercase", letterSpacing: "0.1em" }}>Tap row to check</span>
+            <span style={{ fontSize: 9, color: "#888", textTransform: "uppercase", letterSpacing: "0.1em" }}>Tap to check</span>
           </div>
 
           <button
@@ -1221,13 +1285,13 @@ function Checklist({ selected, projectName, onBack, isMobile }) {
           </button>
         </div>
 
-        <div style={{ marginTop: 8, padding: "9px 12px", background: "#090909", border: "1px solid #111", borderRadius: 5 }}>
-          <div style={{ fontSize: 9, color: "#303030", lineHeight: 1.8 }}>
-            <span style={{ color: "#3E3E3E" }}>ZIP includes</span> · Canvas-rendered images at correct dimensions · Structured SVGs · Valid PDFs · Text stubs for video/binary formats · Category folders · README manifest
+        <div style={{ marginTop: 8, padding: "9px 12px", background: "#090909", border: "1px solid #1A1A1A", borderRadius: 5 }}>
+          <div style={{ fontSize: 9, color: "#888", lineHeight: 1.8 }}>
+            <span style={{ color: "#AAA" }}>ZIP includes</span> · Canvas-rendered images at correct dimensions · Structured SVGs · Valid PDFs · Text stubs for video/binary formats · Category folders · README manifest
           </div>
         </div>
 
-        <div style={{ height: 24 }} />
+        <div style={{ height: "calc(env(safe-area-inset-bottom, 0px) + 32px)" }} />
       </div>
     </div>
   );
@@ -1267,23 +1331,30 @@ export default function ExportPlanner() {
   }
 
   return (
-    <div style={{ height: "100vh", background: "#0D0D0D", fontFamily: FONT, color: "#E8E4DC", display: "flex", flexDirection: "column", overflow: "hidden" }}>
+    <div style={{ height: "100dvh", background: "#0D0D0D", fontFamily: FONT, color: "#E8E4DC", display: "flex", flexDirection: "column", overflow: "hidden" }}>
       {/* Top bar */}
-      <div style={{ background: "#0F0F0F", borderBottom: "1px solid #181818", padding: isMobile ? "10px 14px" : "13px 40px", display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
+      <div style={{
+        background: "#0F0F0F", borderBottom: "1px solid #181818",
+        paddingTop: isMobile ? "calc(env(safe-area-inset-top, 0px) + 10px)" : "13px",
+        paddingBottom: isMobile ? "10px" : "13px",
+        paddingLeft: isMobile ? "calc(env(safe-area-inset-left, 0px) + 16px)" : "40px",
+        paddingRight: isMobile ? "calc(env(safe-area-inset-right, 0px) + 16px)" : "40px",
+        display: "flex", alignItems: "center", gap: 10, flexShrink: 0,
+      }}>
         <button
           onClick={() => setView("landing")}
-          style={{ background: "none", border: "none", color: "#333", cursor: "pointer", fontFamily: FONT, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", padding: 0 }}
+          style={{ background: "none", border: "none", color: "#555", cursor: "pointer", fontFamily: FONT, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", padding: "0 4px", minHeight: 44, display: "flex", alignItems: "center", WebkitTapHighlightColor: "transparent" }}
         >
           DISPATCH
         </button>
-        <span style={{ fontSize: 10, color: "#1E1E1E" }}>by CurioLabs</span>
+        <span style={{ fontSize: 10, color: "#777" }}>by CurioLabs</span>
         <div style={{ flex: 1 }} />
         <div style={{ display: "flex", gap: 4, alignItems: "center" }}>
           {[1, 2, 3].map(s => (
             <div key={s} style={{ width: s === step ? 16 : 5, height: 4, borderRadius: 2, background: s === step ? accentColor : s < step ? `${accentColor}44` : "#1A1A1A", transition: "all 0.3s ease" }} />
           ))}
         </div>
-        <span style={{ fontSize: 9, color: "#2E2E2E", letterSpacing: "0.1em", textTransform: "uppercase" }}>
+        <span style={{ fontSize: 9, color: "#999", letterSpacing: "0.1em", textTransform: "uppercase" }}>
           {step === 1 ? "Pick type" : step === 2 ? "Name it" : "Check off"}
         </span>
       </div>
@@ -1296,8 +1367,17 @@ export default function ExportPlanner() {
       </div>
 
       {/* Footer */}
-      <div style={{ borderTop: "1px solid #111", padding: "6px 20px", display: "flex", justifyContent: "center", alignItems: "center", background: "#090909", flexShrink: 0 }}>
-        <span style={{ fontSize: 9, letterSpacing: "0.2em", color: "#2A2A2A", textTransform: "uppercase" }}>Engineered by CurioLabs</span>
+      <div style={{
+        borderTop: `1px solid ${accentColor}44`,
+        paddingTop: "10px",
+        paddingBottom: "calc(env(safe-area-inset-bottom, 0px) + 10px)",
+        paddingLeft: isMobile ? "calc(env(safe-area-inset-left, 0px) + 20px)" : "20px",
+        paddingRight: isMobile ? "calc(env(safe-area-inset-right, 0px) + 20px)" : "20px",
+        display: "flex", justifyContent: "center", alignItems: "center",
+        background: `${accentColor}0A`,
+        flexShrink: 0,
+      }}>
+        <span style={{ fontSize: 9, letterSpacing: "0.2em", color: accentColor, textTransform: "uppercase", opacity: 0.7 }}>Engineered by CurioLabs</span>
       </div>
     </div>
   );
